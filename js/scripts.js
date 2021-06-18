@@ -30,12 +30,12 @@ AddressBook.prototype.deleteContact = function(id) {
 };
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, emailAddress, physicalAddress) {
+function Contact(firstName, lastName, phoneNumber, emailAddress) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
   this.emailAddress = emailAddress;
-  this.physicalAddress = physicalAddress;
+
 }
 
 Contact.prototype.fullName = function() {
@@ -58,7 +58,6 @@ function showContact(contactId) {
   $(".topping-meat").html(contact.lastName);
   $(".topping-extra").html(contact.phoneNumber);
   $(".pizza-size").html(contact.emailAddress);
-  $(".physical-address").html(contact.physicalAddress);
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -83,18 +82,16 @@ $(document).ready(function() {
   attachContactListeners();    // <--- This line is new!
   $("form#new-topping").submit(function(event) {
     event.preventDefault();
-    const inputtedFirstName = $("input#new-topping-cheese").val();
-    const inputtedLastName = $("input#new-topping-meat").val();
-    const inputtedPhoneNumber = $("input#new-topping-extra").val();
-    const inputtedEmailAddress = $("input#new-pizza-size").val();
-    const inputtedPhysicalAddress = $("input#new-physical-address").val();
+    const inputtedToppingCheese = $("input#new-topping-cheese").val();
+    const inputtedToppingMeat = $("input#new-topping-meat").val();
+    const inputtedToppingExtra = $("input#new-topping-extra").val();
+    const inputtedPizzaSize = $("input#new-pizza-size").val();
     $("input#new-topping-cheese").val("");
     $("input#new-topping-meat").val("");
     $("input#new-topping-extra").val("");
     $("input#new-pizza-size").val("");
-    $("input#new-physical-address").val("");
     
-    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedPhysicalAddress);
+    let newContact = new Contact(inputtedToppingCheese, inputtedToppingMeat, inputtedToppingExtra, inputtedPizzaSize);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);  
   });
