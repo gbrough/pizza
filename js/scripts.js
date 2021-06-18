@@ -46,7 +46,9 @@ function displayToppingDetails(pizzaParlorToDisplay) {
   });
   toppingsList.html(htmlForToppingInfo);
 }
-function showTopping(toppingId) {
+
+$(document).ready(function() {
+// function showTopping(toppingId) {
   const topping = pizzaParlor.findTopping(toppingId);
   $("#show-order").show();
   $(".topping-cheese").html(topping.toppingCheese);
@@ -56,7 +58,7 @@ function showTopping(toppingId) {
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + topping.id + ">Delete</button>");
-}
+})
 
 // function attachToppingListeners() {
 //   $("ul#toppings").on("click", "li", function() {
