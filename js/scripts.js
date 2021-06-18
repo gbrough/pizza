@@ -31,26 +31,25 @@ Topping.prototype.orderSummary = function() {
   return this.cheese + " " + this.meat + " " + this.chesse;
 };
 
-function displayToppingDetails(addressBookToDisplay) {
+function displayToppingDetails(pizzaOrderToDisplay) {
   let toppingsList = $("ul#toppings");
   let htmlForToppingInfo = "";
-  Object.keys(addressBookToDisplay.toppings).forEach(function(key) {
-    const topping = addressBookToDisplay.findTopping(key);
-    htmlForToppingInfo += "<li id=" + topping.id + ">" + topping.firstName + " " + topping.lastName + "</li>";
+  Object.keys(pizzaOrderToDisplay.toppings).forEach(function(key) {
+    const topping = pizzaOrderToDisplay.findTopping(key);
+    htmlForToppingInfo += "<li id=" + topping.id + ">" + topping.cheese + " " + topping.meat + "</li>";
   });
   toppingsList.html(htmlForToppingInfo);
 }
-function showContact(contactId) {
-  const topping = addressBook.findTopping(toppingId);
+function showTopping(toppingId) {
+  const topping = pizzaOrder.findTopping(toppingId);
   $("#show-topping").show();
-  $(".first-name").html(topping.firstName);
-  $(".last-name").html(topping.lastName);
-  $(".phone-number").html(topping.phoneNumber);
-  $(".email-address").html(topping.emailAddress);
-  $(".physical-address").html(topping.physicalAddress);
+  $(".topping-cheese").html(topping.meat);
+  $(".topping-meat").html(topping.cheese);
+  $(".topping-extra").html(topping.extra);
+  $(".topping-size").html(topping.size);
   let buttons = $("#buttons");
   buttons.empty();
-  buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
+  // buttons.append("<button class='deleteButton' id=" +  + topping.id + ">Delete</button>");
 }
 
 function attachToppingListeners() {
@@ -59,31 +58,29 @@ function attachToppingListeners() {
   });
 
   // $("#buttons").on("click", ".deleteButton", function() {
-  //   addressBook.deleteContact(this.id);
-  //   $("#show-contact").hide();
-  //   displayToppingDetails(addressBook);
+  //   pizzaOrder.deleteTopping(this.id);
+  //   $("#show-Topping").hide();
+  //   displayToppingDetails(pizzaOrder);
   // });
 }
 
-let addressBook = new Pizza();
+let pizzaOrder = new Pizza();
 
 $(document).ready(function() {
-  attachContactListeners();    // <--- This line is new!
-  $("form#new-contact").submit(function(event) {
+  attachToppingListeners();    
+  $("form#order-topping").submit(function(event) {
     event.preventDefault();
-    const inputtedFirstName = $("input#new-first-name").val();
-    const inputtedLastName = $("input#new-last-name").val();
-    const inputtedPhoneNumber = $("input#new-phone-number").val();
-    const inputtedEmailAddress = $("input#new-email-address").val();
-    const inputtedPhysicalAddress = $("input#new-physical-address").val();
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-    $("input#new-phone-number").val("");
-    $("input#new-email-address").val("");
-    $("input#new-physical-address").val("");
+    const inputtedCheese = $("input#order-cheese").val();
+    const inputtedMeat = $("input#order-meat").val();
+    const inputtedExtra = $("input#order-extra").val();
+    const inputtedSize = $("input#order-size").val();
+    $("input#order-chease").val("");
+    $("input#order-meat").val("");
+    $("input#order-extra").val("");
+    $("input#order-size").val("");
     
     let newTopping = new Topping(inputtedCheese, inputtedMeat, inputtedExtra, inputtedSize);
-    addressBook.addContact(newContact);
-    displayToppingDetails(addressBook);  
+    pizzaOrder.addTopping(newTopping);
+    displayToppingDetails(pizzaOrder);  
   });
 });
