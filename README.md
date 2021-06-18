@@ -51,6 +51,7 @@ Add ingredient, assign ID to pizza, find size S,M,L, calculates price based on s
 Drop down or radio buttons for ingredients and size - store in object
 
 update variables
+fix delete button for start over
 remove clickable list
 change input from text to drop down
 add logic for price changes
