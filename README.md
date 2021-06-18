@@ -37,8 +37,8 @@
 
 <!-- 
 Addressbook = Pizza = object
-Contacts = IngredientList = prototypes
-Contact = Ingredient
+Contacts = Toppings = prototypes
+Contact = Topping
 
 Create a website for a pizza company where a user can choose one or more individual toppings (cheese, pepperoni, artichoke, anchovy, etc) and a size to order a pizza and see the final cost.
 

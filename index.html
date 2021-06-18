@@ -9,10 +9,58 @@
 </head>
 <body>
   <div class="container">
-      <h2>Welcome to the Online Pizza Parlor</h2>
-    <form>
+    <div class="card-body bg-danger">
+      <h1>Welcome to the Online Pizza Parlor!</h1>
+    </div>
 
+    <p>Please choose your toppings and size to see your order total</p>
+
+    <form id="pizza">
+      <div>
+        <label for="cheese">1. Do you want cheese?</label>
+        <select id="cheese">
+          <option value="choose">Choose</option>
+          <option value="mozzarella">Mozzarella</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="meat">2. Do you want meat?</label>
+        <select id="meat">
+          <option value="choose">Choose</option>
+          <option value="pepporoni">Pepporoni</option>
+        </select>
+      </div>    
+
+      <div>
+        <label for="extra">3. Do you want extra toppings?</label>
+        <select id="extra">
+          <option value="choose">Choose One</option>
+          <option value="extra">Artichokes</option>
+        </select>  
+      </div>
+
+      <div>
+        <label for="size">4. What size do you prefer?</label>
+        <select id="size">
+          <option value="choose">Choose One</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+
+      <div class="card-body bg-danger">
+        <div id="result-hidden">
+          <button type="submit" span class="clickable">Order Total</button>
+        </div>
+
+        <div id="result-showing">
+          <p>Your Order Total is: <span id="output"></span></p>
+          <input type="reset" span class="clickable">
+        </div>         
+      </div>
     </form>
-  </div>
+  </div>  
 </body>
 </html>
