@@ -1,83 +1,101 @@
-function Pizza() {
-  this.toppings = {};
+// Business Logic for AddressBook ---------
+function AddressBook() {
+  this.contacts = {};
   this.currentId = 0;
 }
 
-Pizza.prototype.addTopping = function(topping) {
-  topping.id = this.assignId();
-  this.toppings[topping.id] = topping;
+AddressBook.prototype.addContact = function(contact) {
+  contact.id = this.assignId();
+  this.contacts[contact.id] = contact;
 };
 
-Pizza.prototype.assignId = function() {
+AddressBook.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
 };
 
-Pizza.prototype.findTopping = function(id) {
-  if (this.toppings[id] != undefined) {
-    return this.toppings[id];
+AddressBook.prototype.findContact = function(id) {
+  if (this.contacts[id] != undefined) {
+    return this.contacts[id];
   }
   return false;
 };
 
-// Business Logic for Toppings ---------
-function Topping(cheese, meat, extra) {
-  this.cheese = cheese;
-  this.meat = meat;
-  this.extra = extra;
-}
-
-Topping.prototype.orderSummary = function() {
-  return this.cheese + " " + this.meat + " " + this.extra;
+AddressBook.prototype.deleteContact = function(id) {
+  if (this.contacts[id] === undefined) {
+    return false;
+  }
+  delete this.contacts[id];
+  return true;
 };
 
-function displayToppingDetails(pizzaOrderToDisplay) {
-  let toppingsList = $("ul#toppings");
-  let htmlForToppingInfo = "";
-  Object.keys(pizzaOrderToDisplay.toppings).forEach(function(key) {
-    const topping = pizzaOrderToDisplay.findTopping(key);
-    htmlForToppingInfo += "<li id=" + topping.id + ">" + topping.cheese + " " + topping.meat + "</li>";
-  });
-  toppingsList.html(htmlForToppingInfo);
+// Business Logic for Contacts ---------
+function Contact(firstName, lastName, phoneNumber, emailAddress, physicalAddress) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.phoneNumber = phoneNumber;
+  this.emailAddress = emailAddress;
+  this.physicalAddress = physicalAddress;
 }
-function showTopping(toppingId) {
-  const topping = pizzaOrder.findTopping(toppingId);
-  $("#show-topping").show();
-  $(".topping-cheese").html(topping.meat);
-  $(".topping-meat").html(topping.cheese);
-  $(".topping-extra").html(topping.extra);
-  $(".topping-size").html(topping.size);
+
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+function displayContactDetails(addressBookToDisplay) {
+  let contactsList = $("ul#contacts");
+  let htmlForContactInfo = "";
+  Object.keys(addressBookToDisplay.contacts).forEach(function(key) {
+    const contact = addressBookToDisplay.findContact(key);
+    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>";
+  });
+  contactsList.html(htmlForContactInfo);
+}
+function showContact(contactId) {
+  const contact = addressBook.findContact(contactId);
+  $("#show-order").show();
+  $(".topping-cheese").html(contact.firstName);
+  $(".topping-meat").html(contact.lastName);
+  $(".topping-extra").html(contact.phoneNumber);
+  $(".pizza-size").html(contact.emailAddress);
+  $(".physical-address").html(contact.physicalAddress);
   let buttons = $("#buttons");
   buttons.empty();
-  // buttons.append("<button class='deleteButton' id=" +  + topping.id + ">Delete</button>");
+  buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
 }
 
-function attachToppingListeners() {
-  $("ul#toppings").on("click", "li", function() {
-    showTopping(this.id);
+function attachContactListeners() {
+  $("ul#contacts").on("click", "li", function() {
+    showContact(this.id);
   });
 
-  // $("#buttons").on("click", ".deleteButton", function() {
-  //   pizzaOrder.deleteTopping(this.id);
-  //   $("#show-Topping").hide();
-  //   displayToppingDetails(pizzaOrder);
-  // });
+  $("#buttons").on("click", ".deleteButton", function() {
+    addressBook.deleteContact(this.id);
+    $("#show-order").hide();
+    displayContactDetails(addressBook);
+  });
 }
 
-let pizzaOrder = new Pizza();
+
+let addressBook = new AddressBook();
 
 $(document).ready(function() {
-  attachToppingListeners();    
-  $("form#order-topping").submit(function(event) {
+  attachContactListeners();    // <--- This line is new!
+  $("form#new-topping").submit(function(event) {
     event.preventDefault();
-    const inputtedCheese = $("input#new-cheese-topping").val();
-    const inputtedMeat = $("input#order-meat").val();
-    const inputtedExtra = $("input#order-extra").val();
-    const inputtedSize = $("input#order-size").val();
-
+    const inputtedFirstName = $("input#new-topping-cheese").val();
+    const inputtedLastName = $("input#new-topping-meat").val();
+    const inputtedPhoneNumber = $("input#new-topping-extra").val();
+    const inputtedEmailAddress = $("input#new-pizza-size").val();
+    const inputtedPhysicalAddress = $("input#new-physical-address").val();
+    $("input#new-topping-cheese").val("");
+    $("input#new-topping-meat").val("");
+    $("input#new-topping-extra").val("");
+    $("input#new-pizza-size").val("");
+    $("input#new-physical-address").val("");
     
-    let newTopping = new Topping(inputtedCheese, inputtedMeat, inputtedExtra, inputtedSize);
-    pizzaOrder.addTopping(newTopping);
-    displayToppingDetails(pizzaOrder);  
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedPhysicalAddress);
+    addressBook.addContact(newContact);
+    displayContactDetails(addressBook);  
   });
 });
