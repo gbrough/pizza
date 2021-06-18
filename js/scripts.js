@@ -37,12 +37,8 @@ function Topping(toppingCheese, toppingMeat, toppingExtra, pizzaSize) {
   this.pizzaSize = pizzaSize;
 }
 
-// Topping.prototype.orderSummary = function() {
-//   return this.toppingCheese + " " + this.toppingMeat + this.toppingExtra;
-// };
-
 function displayToppingDetails(pizzaParlorToDisplay) {
-  let toppingsList = $("ul#toppings");
+  // let toppingsList = $("ul#toppings");
   let htmlForToppingInfo = "";
   Object.keys(pizzaParlorToDisplay.toppings).forEach(function(key) {
     const topping = pizzaParlorToDisplay.findTopping(key);
@@ -62,22 +58,22 @@ function showTopping(toppingId) {
   buttons.append("<button class='deleteButton' id=" +  + topping.id + ">Delete</button>");
 }
 
-function attachToppingListeners() {
-  $("ul#toppings").on("click", "li", function() {
-    showTopping(this.id);
-  });
+// function attachToppingListeners() {
+//   $("ul#toppings").on("click", "li", function() {
+//     showTopping(this.id);
+//   });
 
   $("#buttons").on("click", ".deleteButton", function() {
     pizzaParlor.deleteTopping(this.id);
     $("#show-order").hide();
     displayToppingDetails(pizzaParlor);
   });
-}
+// }
 
 let pizzaParlor = new PizzaParlor();
 
 $(document).ready(function() {
-  attachToppingListeners();    
+  // attachToppingListeners();    
   $("form#new-topping").submit(function(event) {
     event.preventDefault();
     const inputtedToppingCheese = $("input#new-topping-cheese").val();
