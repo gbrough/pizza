@@ -28,7 +28,7 @@ function Topping(cheese, meat, extra) {
 }
 
 Topping.prototype.orderSummary = function() {
-  return this.cheese + " " + this.meat + " " + this.chesse;
+  return this.cheese + " " + this.meat + " " + this.extra;
 };
 
 function displayToppingDetails(pizzaOrderToDisplay) {
@@ -70,14 +70,11 @@ $(document).ready(function() {
   attachToppingListeners();    
   $("form#order-topping").submit(function(event) {
     event.preventDefault();
-    const inputtedCheese = $("input#order-cheese").val();
+    const inputtedCheese = $("input#new-cheese-topping").val();
     const inputtedMeat = $("input#order-meat").val();
     const inputtedExtra = $("input#order-extra").val();
     const inputtedSize = $("input#order-size").val();
-    $("input#order-chease").val("");
-    $("input#order-meat").val("");
-    $("input#order-extra").val("");
-    $("input#order-size").val("");
+
     
     let newTopping = new Topping(inputtedCheese, inputtedMeat, inputtedExtra, inputtedSize);
     pizzaOrder.addTopping(newTopping);

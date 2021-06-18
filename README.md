@@ -50,6 +50,10 @@ Keep it simple to start! You do not need to have a complex formula for determini
 Add ingredient, assign ID to pizza, find size S,M,L, calculates price based on size
 Drop down or radio buttons for ingredients and size - store in object
 
+take drop down input
+store it as object
+display it 
+
 -->
 ```
 Describe: wordCounter()

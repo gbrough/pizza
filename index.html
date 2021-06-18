@@ -16,11 +16,16 @@
 
       <form id="order-topping">
         <div>
-          <label for="order-cheese">1. Do you want cheese?</label>
+          <div class="form-group">
+            <label for="new-cheese-topping">Cheese Topping</label>
+            <input type="text"  class="form-control" id="new-cheese-topping">
+          </div>
+
+          <!-- <label for="order-cheese">1. Do you want cheese?</label>
           <select id="order-cheese">
             <option value="none">None</option>
-            <option value="cheese">Mozzarella</option>
-          </select>
+            <option value="order-cheese">Mozzarella</option>
+          </select> -->
         </div>
   
         <div>
@@ -41,10 +46,9 @@
         <div>
           <label for="order-size">4. What size do you prefer?</label>
           <select id="order-size">
-            <option value="none">None</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
+            <option value="small-size">Small</option>
+            <option value="medium-size">Medium</option>
+            <option value="large-size">Large</option>
           </select>
         </div>
         <button type="submit" class="btn-primary">Submit</button>
@@ -65,27 +69,5 @@
       </div>
     </div> 
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  
-
-
-
 </body>
 </html>
