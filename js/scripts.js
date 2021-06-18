@@ -37,9 +37,9 @@ function Topping(toppingCheese, toppingMeat, toppingExtra, pizzaSize) {
   this.pizzaSize = pizzaSize;
 }
 
-Topping.prototype.orderSummary = function() {
-  return this.toppingCheese + " " + this.toppingMeat;
-};
+// Topping.prototype.orderSummary = function() {
+//   return this.toppingCheese + " " + this.toppingMeat + this.toppingExtra;
+// };
 
 function displayToppingDetails(pizzaParlorToDisplay) {
   let toppingsList = $("ul#toppings");
