@@ -50,7 +50,7 @@ function displayToppingDetails(pizzaParlorToDisplay) {
 $(document).ready(function() {
 // function showTopping(toppingId) {
   const topping = pizzaParlor.findTopping(toppingId);
-  $("#show-order").show();
+  $("form#show-order").show();
   $(".topping-cheese").html(topping.toppingCheese);
   $(".topping-meat").html(topping.toppingMeat);
   $(".topping-extra").html(topping.toppingExtra);
