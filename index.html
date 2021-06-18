@@ -9,58 +9,86 @@
 </head>
 <body>
   <div class="container">
-    <div class="card-body bg-danger">
-      <h1>Welcome to the Online Pizza Parlor!</h1>
-    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Welcome to the Online Pizza Parlor!</h1>
+      <p>Please choose your toppings and size to see your order total</p>
 
-    <p>Please choose your toppings and size to see your order total</p>
-
-    <form id="pizza">
-      <div>
-        <label for="cheese">1. Do you want cheese?</label>
-        <select id="cheese">
-          <option value="choose">Choose</option>
-          <option value="mozzarella">Mozzarella</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="meat">2. Do you want meat?</label>
-        <select id="meat">
-          <option value="choose">Choose</option>
-          <option value="pepporoni">Pepporoni</option>
-        </select>
-      </div>    
-
-      <div>
-        <label for="extra">3. Do you want extra toppings?</label>
-        <select id="extra">
-          <option value="choose">Choose One</option>
-          <option value="extra">Artichokes</option>
-        </select>  
-      </div>
-
-      <div>
-        <label for="size">4. What size do you prefer?</label>
-        <select id="size">
-          <option value="choose">Choose One</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-      </div>
-
-      <div class="card-body bg-danger">
-        <div id="result-hidden">
-          <button type="submit" span class="clickable">Order Total</button>
+      <form id="pizza">
+        <div>
+          <label for="cheese">1. Do you want cheese?</label>
+          <select id="cheese">
+            <option value="none">None</option>
+            <option value="cheese">Mozzarella</option>
+          </select>
         </div>
-
-        <div id="result-showing">
-          <p>Your Order Total is: <span id="output"></span></p>
-          <input type="reset" span class="clickable">
-        </div>         
+  
+        <div>
+          <label for="meat">2. Do you want meat?</label>
+          <select id="meat">
+            <option value="none">None</option>
+            <option value="meat">Pepporoni</option>
+          </select>
+        </div>    
+  
+        <div>
+          <label for="extra">3. Do you want extra toppings?</label>
+          <select id="extra">
+            <option value="none">None</option>
+            <option value="extra">Artichokes</option>
+          </select>  
+        </div>
+  
+        <div>
+          <label for="size">4. What size do you prefer?</label>
+          <select id="size">
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+      </form>
+      <hr>
+      <h2>Order Summary:</h2>
+      <ul id="order">
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div id="show-contact">
+          <p>First Name: <span class="first-name"></span></p>
+          <p>Last Name: <span class="last-name"></span></p>
+          <p>Phone Number: <span class="phone-number"></span></p>
+          <p>Email Address: <span class="email-address"></span></p>
+          <p>Physical Address: <span class="physical-address"></span></p>
+          <div id="buttons">
+          </div>
+        </div>
       </div>
-    </form>
-  </div>  
+    </div>   
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+
+
 </body>
 </html>
