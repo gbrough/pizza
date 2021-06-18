@@ -9,6 +9,7 @@ PizzaParlor.prototype.addTopping = function(topping) {
   this.toppings[topping.id] = topping;
 };
 
+
 PizzaParlor.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
